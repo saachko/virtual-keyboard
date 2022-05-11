@@ -1,0 +1,85 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+.title,
+.subtitle,
+.descr {
+  text-align: center;
+}
+
+.descr span {
+  font-style: italic;
+  color: rosybrown;
+}
+
+.output {
+  display: block;
+  margin: 0 auto;
+  resize: vertical;
+  max-height: 300px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.output:focus {
+  outline: 2px solid rosybrown;
+}
+
+.keyboard {
+  width: 100%;
+  margin: 30px auto;
+  width: 750px;
+  padding: 15px;
+}
+
+.keyboard__row {
+  width: 100%;
+  display: grid;
+}
+
+.keyboard__key {
+  height: 35px;
+  text-align: center;
+  outline: 1px solid rosybrown;
+  padding-top: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
+  margin: 5px;
+}
+
+.keyboard__key:hover {
+  cursor: pointer;
+  background-color: mistyrose;
+}
+.keyboard__key:active {
+  background-color: pink;
+}
+
+.sub {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: rosybrown;
+  font-size: 12px;
+}
+
+.keyboard__key[data-code='Space'] {
+  width: 195px;
+}
+
+.keyboard__key[data-code='ShiftLeft'],
+.keyboard__key[data-code='ShiftRight'],
+.keyboard__key[data-code='CapsLock'],
+.keyboard__key[data-code='Backspace'],
+.keyboard__key[data-code='AltRight'],
+.keyboard__key[data-code='AltLeft'],
+.keyboard__key[data-code='MetaRight'],
+.keyboard__key[data-code='MetaLeft'],
+.keyboard__key[data-code='Tab'],
+.keyboard__key[data-code='Enter'],
+.keyboard__key[data-code='ControlLeft'] {
+  font-size: 14px;
+}
