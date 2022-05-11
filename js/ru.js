@@ -305,7 +305,7 @@ export default [
     code: 'AltRight',
   },
   {
-    small: '◄',
+    small: '◀',
     shift: null,
     code: 'ArrowLeft',
   },
@@ -315,7 +315,7 @@ export default [
     code: 'ArrowDown',
   },
   {
-    small: '►',
+    small: '▶',
     shift: null,
     code: 'ArrowRight',
   }
