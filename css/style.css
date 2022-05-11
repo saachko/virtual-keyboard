@@ -50,14 +50,6 @@ body {
   margin: 5px;
 }
 
-.keyboard__key:hover {
-  cursor: pointer;
-  background-color: mistyrose;
-}
-.keyboard__key:active {
-  background-color: pink;
-}
-
 .sub {
   position: absolute;
   top: 5px;
@@ -82,4 +74,20 @@ body {
 .keyboard__key[data-code='Enter'],
 .keyboard__key[data-code='ControlLeft'] {
   font-size: 14px;
+  background-color: lavenderblush;
+}
+
+.keyboard__key[data-code='ArrowRight'],
+.keyboard__key[data-code='ArrowLeft'],
+.keyboard__key[data-code='ArrowUp'],
+.keyboard__key[data-code='ArrowDown'] {
+  background-color: thistle;
+}
+
+.keyboard__key:hover {
+  cursor: pointer;
+  background-color: mistyrose;
+}
+.keyboard__key:active {
+  background-color: pink;
 }
