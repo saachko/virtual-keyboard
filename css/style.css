@@ -18,6 +18,7 @@ body {
 .note {
   margin-top: 0;
   color: gray;
+  font-size: 14px;
 }
 
 .note span {
