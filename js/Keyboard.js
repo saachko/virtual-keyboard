@@ -20,7 +20,7 @@ export default class Keyboard {
     this.output = create ('textarea', 'output', null, main,
       ['placeholder', 'Type here...'],
       ['rows', 5],
-      ['cols', 50],
+      ['cols', 90],
       ['spellcheck', false],
       ['autocorrect', 'off']);
     this.container = create('div', 'keyboard', null, main, ['language', langCode]);
