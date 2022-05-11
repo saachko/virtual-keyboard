@@ -1,4 +1,4 @@
-import * as storage from './storage,js';
+import * as storage from './storage.js';
 import create from './create.js';
 import language from './index.js';
 import Key from './Key.js'
