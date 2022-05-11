@@ -6,8 +6,22 @@ body {
 
 .title,
 .subtitle,
-.descr {
+.descr,
+.note {
   text-align: center;
+}
+
+.subtitle {
+  margin-bottom: 0;
+}
+
+.note {
+  margin-top: 0;
+  color: gray;
+}
+
+.note span {
+  font-style: italic;
 }
 
 .descr span {
