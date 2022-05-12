@@ -73,6 +73,18 @@ body {
   font-size: 12px;
 }
 
+.sub_active {
+  font-size: 16px;
+}
+
+.letter_inactive {
+  color: gray;
+  font-size: 12px;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
 .keyboard__key[data-code='Space'] {
   width: 195px;
 }
