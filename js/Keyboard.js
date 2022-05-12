@@ -125,7 +125,7 @@ export default class Keyboard {
     this.keyBase = langIndex + 1 < langAbbr.length ? language[langAbbr[langIndex += 1]] : language[langAbbr[langIndex -= langIndex]];
 
     this.container.dataset.language = langAbbr[langIndex];
-    storage.set['kbLang', langAbbr[langIndex]];
+    storage.set('kbLang', langAbbr[langIndex]);
 
     this.keyButtons.forEach((btn) => {
       const keyObj = this.keyBase.find((key) => key.code === btn.code);
