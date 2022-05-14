@@ -102,7 +102,7 @@ export default [
   {
     small: 'y',
     shift: 'Y',
-    code: 'keyY',
+    code: 'KeyY',
   },
   {
     small: 'u',

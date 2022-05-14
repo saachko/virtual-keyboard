@@ -102,7 +102,7 @@ export default [
   {
     small: 'н',
     shift: 'Н',
-    code: 'keyY',
+    code: 'KeyY',
   },
   {
     small: 'г',
