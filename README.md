@@ -5,7 +5,7 @@ _**Virtual Keyboard** is a keyboard created with JavaScript which performs the f
 [Link to the deploy](https://saachko.github.io/virtual-keyboard/ "virtual-keyboard")
 
 ## Task completion
-[Link to the task](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/stage-2/rs-lang/rslang.md)
+[Link to the task](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/virtual-keyboard/virtual-keyboard-en.md)
 
 **Minimal scope:**
 
