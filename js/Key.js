@@ -1,4 +1,4 @@
-import create from './create.js'
+import create from './create';
 
 export default class Key {
   constructor({ small, shift, code }) {
@@ -10,7 +10,7 @@ export default class Key {
     if (shift && shift.match(/[^a-zA-Zа-яА-ЯёЁ0-9]/)) {
       this.sub = create('div', 'sub', this.shift);
     } else {
-      this.sub = create('div', 'sub', '')
+      this.sub = create('div', 'sub', '');
     }
 
     this.letter = create('div', 'letter', small);

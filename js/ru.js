@@ -190,7 +190,7 @@ export default [
     code: 'Semicolon',
   },
   {
-    small: "э",
+    small: 'э',
     shift: 'Э',
     code: 'Quote',
   },
@@ -318,5 +318,5 @@ export default [
     small: '▶',
     shift: null,
     code: 'ArrowRight',
-  }
-]
+  },
+];

@@ -318,5 +318,5 @@ export default [
     small: '▶',
     shift: null,
     code: 'ArrowRight',
-  }
-]
+  },
+];

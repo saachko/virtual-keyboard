@@ -1,13 +1,23 @@
-import * as storage from './storage.js';
-import create from './create.js';
-import language from './index.js';
-import Key from './Key.js'
+/* eslint-disable no-param-reassign */
+import * as storage from './storage';
+import create from './create';
+import language from './index';
+import Key from './Key';
 
-const main = create('main', '', 
-  [create('h1', 'title', 'Virtual Keyboard'),
-    create('h3', 'subtitle', 'This keyboard was created under macOS'),
-    create('p', 'note', '* there are no <span>Delete</span> and <span>Win</span> keys on macOS keyboard'),
-    create('p', 'descr', 'Use left <span>Control</span> and left <span>Option</span> to change language')]);
+const main = create('main', '', [
+  create('h1', 'title', 'Virtual Keyboard'),
+  create('h3', 'subtitle', 'This keyboard was created under macOS'),
+  create(
+    'p',
+    'note',
+    '* there are no <span>Delete</span> and <span>Win</span> keys on macOS keyboard',
+  ),
+  create(
+    'p',
+    'descr',
+    'Use left <span>Control</span> and left <span>Option</span> to change language',
+  ),
+]);
 
 export default class Keyboard {
   constructor(rowsOrder) {
@@ -18,13 +28,21 @@ export default class Keyboard {
 
   init(langCode) {
     this.keyBase = language[langCode];
-    this.output = create ('textarea', 'output', null, main,
+    this.output = create(
+      'textarea',
+      'output',
+      null,
+      main,
       ['placeholder', 'Start typing...'],
       ['rows', 5],
       ['cols', 90],
       ['spellcheck', false],
-      ['autocorrect', 'off']);
-    this.container = create('div', 'keyboard', null, main, ['language', langCode]);
+      ['autocorrect', 'off'],
+    );
+    this.container = create('div', 'keyboard', null, main, [
+      'language',
+      langCode,
+    ]);
     document.body.prepend(main);
     return this;
   }
@@ -32,7 +50,10 @@ export default class Keyboard {
   generateKeyboard() {
     this.keyButtons = [];
     this.rowsOrder.forEach((row, i) => {
-      const rowElement = create('div', 'keyboard__row', null, this.container, ['row', i+1]);
+      const rowElement = create('div', 'keyboard__row', null, this.container, [
+        'row',
+        i + 1,
+      ]);
       rowElement.style.gridTemplateColumns = `repeat(${row.length}, 1fr)`;
       row.forEach((code) => {
         const keyObj = this.keyBase.find((key) => key.code === code);
@@ -56,10 +77,10 @@ export default class Keyboard {
     const keyDiv = e.target.closest('.keyboard__key');
     if (!keyDiv) return;
 
-    const code = keyDiv.dataset.code;
-    
-    this.handleEvent({ code, type: e.type })
-  }
+    const { code } = keyDiv.dataset;
+
+    this.handleEvent({ code, type: e.type });
+  };
 
   handleEvent = (e) => {
     if (e.stopPropagation) e.stopPropagation();
@@ -73,17 +94,17 @@ export default class Keyboard {
 
       if (code.match(/Shift/)) {
         this.shiftKey = true;
-        this.switchUpperCase(true)
+        this.switchUpperCase(true);
       }
 
       if (code.match(/Caps/)) {
         this.isCaps = true;
-        this.switchUpperCase(true)
+        this.switchUpperCase(true);
       }
-      
+
       keyObj.div.style.backgroundColor = 'pink';
 
-      //change language
+      // change language
 
       if (code.match(/Control/)) this.control = true;
       if (code.match(/Alt/)) this.alt = true;
@@ -91,16 +112,21 @@ export default class Keyboard {
       if (code.match(/Control/) && this.alt) this.changeLang();
       if (code.match(/Alt/) && this.control) this.changeLang();
 
-      if(!this.isCaps) {
+      if (!this.isCaps) {
         this.print(keyObj, this.shiftKey ? keyObj.shift : keyObj.small);
       } else if (this.isCaps) {
         if (this.shiftKey) {
-          this.print(keyObj, keyObj.sub.innerHTML ? keyObj.shift : keyObj.small);
+          this.print(
+            keyObj,
+            keyObj.sub.innerHTML ? keyObj.shift : keyObj.small,
+          );
         } else {
-          this.print(keyObj, !keyObj.sub.innerHTML ? keyObj.shift : keyObj.small);
+          this.print(
+            keyObj,
+            !keyObj.sub.innerHTML ? keyObj.shift : keyObj.small,
+          );
         }
       }
-
     } else if (type.match(/keyup|mouseup/)) {
       keyObj.div.style.backgroundColor = '';
 
@@ -114,15 +140,17 @@ export default class Keyboard {
 
       if (code.match(/Caps/)) {
         this.isCaps = false;
-        this.switchUpperCase(false)
+        this.switchUpperCase(false);
       }
     }
-  }
+  };
 
   changeLang = () => {
     const langAbbr = Object.keys(language);
     let langIndex = langAbbr.indexOf(this.container.dataset.language);
-    this.keyBase = langIndex + 1 < langAbbr.length ? language[langAbbr[langIndex += 1]] : language[langAbbr[langIndex -= langIndex]];
+    this.keyBase = langIndex + 1 < langAbbr.length
+      ? language[langAbbr[(langIndex += 1)]]
+      : language[langAbbr[(langIndex -= langIndex)]];
 
     this.container.dataset.language = langAbbr[langIndex];
     storage.set('kbLang', langAbbr[langIndex]);
@@ -133,7 +161,7 @@ export default class Keyboard {
 
       btn.small = keyObj.small;
       btn.shift = keyObj.shift;
-      
+
       if (keyObj.shift && keyObj.shift.match(/[^a-zA-Zа-яА-ЯёЁ0-9]/)) {
         btn.sub.innerHTML = keyObj.shift;
       } else {
@@ -146,7 +174,7 @@ export default class Keyboard {
     if (this.isCaps) {
       this.switchUpperCase(true);
     }
-  }
+  };
 
   switchUpperCase(isTrue) {
     if (isTrue) {
@@ -174,7 +202,7 @@ export default class Keyboard {
 
           if (!this.isCaps) {
             btn.letter.innerHTML = btn.small;
-          } else if (!this.isCaps) {
+          } else if (this.isCaps) {
             btn.letter.innerHTML = btn.shift;
           }
         } else if (!btn.isFn) {
@@ -196,35 +224,35 @@ export default class Keyboard {
     const fnBtn = {
       Tab: () => {
         this.output.value = `${left}\t${right}`;
-        cursorPos++;
+        cursorPos += 1;
       },
       ArrowLeft: () => {
         this.output.value = `${left}◀${right}`;
-        cursorPos++;
+        cursorPos += 1;
       },
       ArrowDown: () => {
         this.output.value = `${left}▼${right}`;
-        cursorPos++;
+        cursorPos += 1;
       },
       ArrowRight: () => {
         this.output.value = `${left}▶${right}`;
-        cursorPos++;
+        cursorPos += 1;
       },
       ArrowUp: () => {
         this.output.value = `${left}▲${right}`;
-        cursorPos++;
+        cursorPos += 1;
       },
       Enter: () => {
         this.output.value = `${left}\n${right}`;
-        cursorPos++;
+        cursorPos += 1;
       },
       Space: () => {
         this.output.value = `${left} ${right}`;
-        cursorPos++;
+        cursorPos += 1;
       },
       Backspace: () => {
         this.output.value = `${left.slice(0, -1)}${right}`;
-        cursorPos--;
+        cursorPos -= 1;
       },
     };
     if (fnBtn[keyObj.code]) {
@@ -232,7 +260,7 @@ export default class Keyboard {
     }
 
     if (!keyObj.isFn) {
-      cursorPos++;
+      cursorPos += 1;
       this.output.value = `${left}${char}${right}`;
     }
 
