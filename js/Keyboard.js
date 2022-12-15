@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import * as storage from './storage';
-import create from './create';
-import language from './index';
-import Key from './Key';
+import * as storage from './storage.js';
+import create from './create.js';
+import language from './index.js';
+import Key from './Key.js';
 
 const main = create('main', '', [
   create('h1', 'title', 'Virtual Keyboard'),
