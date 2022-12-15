@@ -27,5 +27,6 @@ _**Virtual Keyboard** is a keyboard created with JavaScript which performs the f
 
 - javascript
 - usage of ES6+ features (classes, property destructuring, etc)
+- eslint
 
 _Developed by [Anastasiya Sachko](https://github.com/saachko)_
